@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata - PPDB SMKN Tugumulyo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#0f4c81', secondary: '#f59e0b', sidebar: '#1e293b' },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .step-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out;
+        }
+        .step-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <!-- SIDEBAR (Sama seperti sebelumnya) -->
+        <aside id="sidebar" class="bg-sidebar text-white w-64 flex-shrink-0 hidden md:flex flex-col transition-all duration-300 z-20 h-full fixed md:relative">
+            <div class="h-16 flex items-center justify-center border-b border-gray-700 bg-gray-900/50">
+                <div class="flex items-center gap-2 font-bold text-lg">
+                    <i class="fa-solid fa-graduation-cap text-secondary text-2xl"></i>
+                    <span>PPDB <span class="text-secondary">SMK</span></span>
+                </div>
+                <button id="closeSidebar" class="md:hidden absolute right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="p-6 border-b border-gray-700 text-center">
+                 <h4 class="font-semibold text-sm text-white">Budi Santoso</h4>
+                 <p class="text-xs text-gray-400">No. Pend: 2025001</p>
+            </div>
+            <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <a href="siswa.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fa-solid fa-gauge-high w-5"></i> Dashboard
+                </a>
+                <a href="biodata.html" class="flex items-center gap-3 px-4 py-3 bg-primary rounded-lg text-white transition">
+                    <i class="fa-solid fa-user-pen w-5"></i> Biodata Siswa
+                </a>
+                <a href="dokumen.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fa-solid fa-folder-open w-5"></i> Upload Dokumen
+                </a>
+                <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fa-solid fa-bullhorn w-5"></i> Pengumuman
+                </a>
+            </nav>
+            <div class="p-4 border-t border-gray-700">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-2 text-red-400 hover:bg-red-900/20 hover:text-red-300 rounded-lg transition w-full">
+                    <i class="fa-solid fa-right-from-bracket w-5"></i> Keluar
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="flex-1 flex flex-col h-screen overflow-hidden relative w-full">
+            <header class="bg-white shadow-sm h-16 flex items-center justify-between px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button id="openSidebar" class="md:hidden text-gray-600 text-xl focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+                    <h2 class="text-xl font-bold text-primary hidden sm:block">Biodata Siswa</h2>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4 md:p-8">
+                <div class="max-w-4xl mx-auto">
+                    
+                    <!-- STEPPER INDICATOR (Sesuai Request Gambar) -->
+                    <div class="mb-10 px-4">
+                        <div class="flex items-center justify-between relative max-w-2xl mx-auto">
+                            <!-- Garis Penghubung Belakang -->
+                            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 w-full h-1 bg-gray-300 -z-10 rounded"></div>
+                            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 h-1 bg-primary -z-10 rounded transition-all duration-500" id="progress-bar" style="width: 0%"></div>
+
+                            <!-- Step 1 -->
+                            <div class="flex flex-col items-center relative z-10 cursor-pointer" onclick="goToStep(1)">
+                                <div id="step-circle-1" class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white bg-primary border-4 border-white shadow-md transition-all duration-300 scale-110">1</div>
+                                <span class="text-xs font-semibold mt-2 text-primary absolute -bottom-6 w-32 text-center">Data Diri</span>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="flex flex-col items-center relative z-10 cursor-pointer" onclick="goToStep(2)">
+                                <div id="step-circle-2" class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-gray-500 bg-white border-4 border-gray-300 shadow-md transition-all duration-300">2</div>
+                                <span class="text-xs font-semibold mt-2 text-gray-500 absolute -bottom-6 w-32 text-center">Sekolah Asal</span>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="flex flex-col items-center relative z-10 cursor-pointer" onclick="goToStep(3)">
+                                <div id="step-circle-3" class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-gray-500 bg-white border-4 border-gray-300 shadow-md transition-all duration-300">3</div>
+                                <span class="text-xs font-semibold mt-2 text-gray-500 absolute -bottom-6 w-32 text-center">Orang Tua</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORM CARD -->
+                    <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
+                        <div class="p-6 md:p-8">
+                            <form onsubmit="saveData(event)" id="mainForm">
+                                
+                                <!-- STEP 1: DATA DIRI -->
+                                <div id="step-1" class="step-content active">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                                        <i class="fa-regular fa-id-card text-primary"></i> Data Pribadi
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Nama Lengkap</label>
+                                            <input type="text" value="Budi Santoso" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">NISN</label>
+                                            <input type="text" value="0012345678" readonly class="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-2 text-gray-500 cursor-not-allowed">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Tempat Lahir</label>
+                                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Tanggal Lahir</label>
+                                            <input type="date" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Jenis Kelamin</label>
+                                            <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-white">
+                                                <option>Laki-laki</option>
+                                                <option>Perempuan</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Agama</label>
+                                            <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-white">
+                                                <option>Islam</option>
+                                                <option>Kristen</option>
+                                                <option>Katolik</option>
+                                                <option>Hindu</option>
+                                                <option>Buddha</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <label class="block text-sm font-medium mb-1 text-gray-700">Alamat Lengkap</label>
+                                        <textarea rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none"></textarea>
+                                    </div>
+                                    
+                                    <!-- Tombol Navigasi Step 1 -->
+                                    <div class="flex justify-end mt-8 border-t pt-4">
+                                        <button type="button" onclick="changeStep(2)" class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-lg font-medium shadow-md transition flex items-center gap-2">
+                                            Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 2: SEKOLAH ASAL -->
+                                <div id="step-2" class="step-content">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                                        <i class="fa-solid fa-school text-primary"></i> Data Sekolah Asal
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="md:col-span-2">
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Nama Sekolah Asal</label>
+                                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none" placeholder="Contoh: SMP Negeri 1 Tugumulyo">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">NPSN Sekolah</label>
+                                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Tahun Lulus</label>
+                                            <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-white">
+                                                <option>2025</option>
+                                                <option>2024</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tombol Navigasi Step 2 -->
+                                    <div class="flex justify-between mt-8 border-t pt-4">
+                                        <button type="button" onclick="changeStep(1)" class="text-gray-600 hover:text-gray-800 font-medium px-4 py-2.5 rounded-lg transition flex items-center gap-2">
+                                            <i class="fa-solid fa-arrow-left"></i> Kembali
+                                        </button>
+                                        <button type="button" onclick="changeStep(3)" class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-lg font-medium shadow-md transition flex items-center gap-2">
+                                            Selanjutnya <i class="fa-solid fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- STEP 3: ORANG TUA & SIMPAN -->
+                                <div id="step-3" class="step-content">
+                                    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+                                        <i class="fa-solid fa-users text-primary"></i> Data Orang Tua
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Nama Ayah</label>
+                                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Pekerjaan Ayah</label>
+                                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Nama Ibu</label>
+                                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">Pekerjaan Ibu</label>
+                                            <input type="text" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-medium mb-1 text-gray-700">No. HP Orang Tua</label>
+                                            <input type="tel" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                        </div>
+                                    </div>
+                                    
+
+                                    <!-- Tombol Navigasi Step 3 -->
+                                    <div class="flex justify-between mt-8 border-t pt-4">
+                                        <button type="button" onclick="changeStep(2)" class="text-gray-600 hover:text-gray-800 font-medium px-4 py-2.5 rounded-lg transition flex items-center gap-2">
+                                            <i class="fa-solid fa-arrow-left"></i> Kembali
+                                        </button>
+                                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-8 py-2.5 rounded-lg font-bold shadow-lg transition flex items-center gap-2">
+                                            <i class="fa-solid fa-save"></i> Simpan Data
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-gray-800 text-white px-6 py-4 rounded-lg shadow-xl translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-green-400"></i>
+        <span>Data berhasil disimpan!</span>
+    </div>
+
+    
+</body>
+</html>

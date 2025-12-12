@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan - PPDB SMKN Tugumulyo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: { colors: { primary: '#0f4c81', secondary: '#f59e0b', sidebar: '#1e293b' }, fontFamily: { sans: ['Poppins', 'sans-serif'] } }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <aside class="bg-sidebar text-white w-64 flex-shrink-0 hidden md:flex flex-col transition-all duration-300 z-20 h-full fixed md:relative shadow-xl">
+            <div class="h-16 flex items-center justify-center border-b border-gray-700 bg-gray-900/50">
+                <div class="flex items-center gap-2 font-bold text-lg">
+                    <i class="fa-solid fa-user-shield text-secondary text-2xl"></i>
+                    <span>PANITIA <span class="text-secondary">PPDB</span></span>
+                </div>
+            </div>
+            <div class="p-6 border-b border-gray-700 flex items-center gap-4">
+                <div class="w-12 h-12 rounded-full bg-gray-600 overflow-hidden border-2 border-primary">
+                    <img src="https://ui-avatars.com/api/?name=Admin+Panitia&background=0f4c81&color=fff" alt="Admin" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h4 class="font-semibold text-sm">Pak Budi</h4>
+                    <p class="text-xs text-green-400 flex items-center gap-1"><i class="fa-solid fa-circle text-[8px]"></i> Online</p>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <a href="panitia.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition group">
+                    <i class="fa-solid fa-chart-line w-5"></i> Dashboard
+                </a>
+                <a href="verifikasi.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition group">
+                    <i class="fa-solid fa-file-circle-check w-5 group-hover:text-secondary transition"></i> 
+                    <span class="flex-1">Verifikasi Berkas</span>
+                    <span class="bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full">12</span>
+                </a>
+                <a href="siswa.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition group">
+                    <i class="fa-solid fa-users w-5 group-hover:text-secondary transition"></i> Data Siswa
+                </a>
+                <a href="laporan.html" class="flex items-center gap-3 px-4 py-3 bg-primary rounded-lg text-white transition shadow-lg shadow-blue-900/50">
+                    <i class="fa-solid fa-print w-5 group-hover:text-secondary transition"></i> Laporan
+                </a>
+                <a href="pengaturan.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition group">
+                    <i class="fa-solid fa-gear w-5 group-hover:text-secondary transition"></i> Pengaturan
+                </a>
+            </nav>
+            <div class="p-4 border-t border-gray-700">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-2 text-red-400 hover:bg-red-900/20 hover:text-red-300 rounded-lg transition w-full">
+                    <i class="fa-solid fa-power-off w-5"></i> Logout
+                </a>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col h-screen overflow-hidden">
+            <header class="bg-white shadow-sm h-16 flex items-center justify-between px-6 z-10">
+                <h2 class="text-xl font-bold text-gray-800">Laporan & Statistik</h2>
+            </header>
+
+            <main class="flex-1 overflow-auto bg-gray-100 p-6">
+                <!-- Statistik Jurusan -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-4">Pendaftar per Jurusan</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>TKJ</span><span class="font-bold">450</span></div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-blue-600 h-2.5 rounded-full" style="width: 75%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>DKV</span><span class="font-bold">320</span></div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-purple-600 h-2.5 rounded-full" style="width: 55%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>TKR</span><span class="font-bold">280</span></div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-red-600 h-2.5 rounded-full" style="width: 45%"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm mb-1"><span>Akuntansi</span><span class="font-bold">195</span></div>
+                                <div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-green-600 h-2.5 rounded-full" style="width: 35%"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-xl shadow-sm">
+                        <h3 class="font-bold text-gray-800 mb-4">Export Data</h3>
+                        <div class="grid grid-cols-1 gap-4">
+                            <button class="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-green-100 text-green-600 rounded flex items-center justify-center"><i class="fa-solid fa-file-excel text-xl"></i></div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold text-sm">Data Lengkap Siswa</h4>
+                                        <p class="text-xs text-gray-500">Format .xlsx (Excel)</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-download text-gray-400"></i>
+                            </button>
+                            <button class="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-red-100 text-red-600 rounded flex items-center justify-center"><i class="fa-solid fa-file-pdf text-xl"></i></div>
+                                    <div class="text-left">
+                                        <h4 class="font-bold text-sm">Laporan Hasil Seleksi</h4>
+                                        <p class="text-xs text-gray-500">Format .pdf (Siap Cetak)</p>
+                                    </div>
+                                </div>
+                                <i class="fa-solid fa-download text-gray-400"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

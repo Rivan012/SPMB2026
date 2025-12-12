@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengumuman - PPDB SMKN Tugumulyo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#0f4c81', secondary: '#f59e0b', sidebar: '#1e293b' },
+                    fontFamily: { sans: ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800 antialiased">
+    <div class="flex h-screen overflow-hidden">
+        <!-- SIDEBAR -->
+        <aside id="sidebar" class="bg-sidebar text-white w-64 flex-shrink-0 hidden md:flex flex-col transition-all duration-300 z-20 h-full fixed md:relative">
+            <div class="h-16 flex items-center justify-center border-b border-gray-700 bg-gray-900/50">
+                <div class="flex items-center gap-2 font-bold text-lg">
+                    <i class="fa-solid fa-graduation-cap text-secondary text-2xl"></i>
+                    <span>PPDB <span class="text-secondary">SMK</span></span>
+                </div>
+                <button id="closeSidebar" class="md:hidden absolute right-4 text-gray-400 hover:text-white"><i class="fa-solid fa-times"></i></button>
+            </div>
+            <div class="p-6 border-b border-gray-700 text-center">
+                 <h4 class="font-semibold text-sm text-white">Budi Santoso</h4>
+                 <p class="text-xs text-gray-400">No. Pend: 2025001</p>
+            </div>
+            <nav class="flex-1 overflow-y-auto py-4 px-3 space-y-1">
+                <a href="siswa.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fa-solid fa-gauge-high w-5"></i> Dashboard
+                </a>
+                <a href="biodata.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fa-solid fa-user-pen w-5"></i> Biodata Siswa
+                </a>
+                <a href="dokumen.html" class="flex items-center gap-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition">
+                    <i class="fa-solid fa-folder-open w-5"></i> Upload Dokumen
+                </a>
+                <a href="pengumuman.html" class="flex items-center gap-3 px-4 py-3 bg-primary rounded-lg text-white transition">
+                    <i class="fa-solid fa-bullhorn w-5"></i> Pengumuman
+                </a>
+            </nav>
+            <div class="p-4 border-t border-gray-700">
+                <a href="index.html" class="flex items-center gap-3 px-4 py-2 text-red-400 hover:bg-red-900/20 hover:text-red-300 rounded-lg transition w-full">
+                    <i class="fa-solid fa-right-from-bracket w-5"></i> Keluar
+                </a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="flex-1 flex flex-col h-screen overflow-hidden relative w-full">
+            <header class="bg-white shadow-sm h-16 flex items-center justify-between px-6 z-10">
+                <div class="flex items-center gap-4">
+                    <button id="openSidebar" class="md:hidden text-gray-600 text-xl focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+                    <h2 class="text-xl font-bold text-primary hidden sm:block">Pengumuman</h2>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4 md:p-8">
+                <div class="max-w-4xl mx-auto space-y-4">
+                    <!-- Post 1 -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-primary">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-primary text-white text-xs px-2 py-1 rounded">Akademik</span>
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 2 Jam yang lalu</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Jadwal Tes Seleksi Akademik</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Tes seleksi akademik dilaksanakan tanggal 10 Juni 2025. Harap membawa Kartu Ujian yang dapat dicetak setelah verifikasi berkas selesai.
+                        </p>
+                    </div>
+                    <!-- Post 2 -->
+                    <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-secondary">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="bg-secondary text-white text-xs px-2 py-1 rounded">Penting</span>
+                            <span class="text-xs text-gray-500"><i class="fa-regular fa-clock mr-1"></i> 1 Hari yang lalu</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Perubahan Jadwal Verifikasi Berkas</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Jadwal verifikasi berkas fisik diundur menjadi tanggal 2 Juni 2025 dikarenakan libur nasional.
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const openBtn = document.getElementById('openSidebar');
+        const closeBtn = document.getElementById('closeSidebar');
+        
+        function toggleSidebar() {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('absolute');
+            sidebar.classList.toggle('h-full');
+        }
+        openBtn.addEventListener('click', toggleSidebar);
+        closeBtn.addEventListener('click', toggleSidebar);
+    </script>
+</body>
+</html>
