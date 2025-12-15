@@ -1,4 +1,4 @@
-# 🎓 SPMB 2026 - Sistem Penerimaan Mahasiswa Baru
+    # 🎓 SPMB 2026 - Sistem Penerimaan Mahasiswa Baru
 
 ![App Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
@@ -8,13 +8,6 @@
 
 ---
 
-## 📸 Screenshot
-
-*(Simpan screenshot aplikasi di folder `public/img/` atau `assets/` dan ganti link di bawah ini)*
-
-| Halaman Depan | Dashboard Admin | Dashboard Siswa |
-|:---:|:---:|:---:|
-| ![Home](path/to/home.png) | ![Admin](path/to/admin.png) | ![Siswa](path/to/siswa.png) |
 
 ---
 
@@ -65,7 +58,7 @@ Ikuti langkah-langkah berikut untuk menjalankan project di komputer lokal:
 
 1.  **Clone Repositori**
     ```bash
-    git clone [https://github.com/username-kamu/spmb2026.git](https://github.com/username-kamu/spmb2026.git)
+    git clone [[https://github.com/username-kamu/spmb2026.git](https://github.com/username-kamu/spmb2026.git)](https://github.com/Rivan012/SPMB2026.git)
     cd spmb2026
     ```
 
@@ -134,8 +127,8 @@ Kontribusi sangat terbuka! Jika ingin menambahkan fitur:
 
 ## 📝 Lisensi
 
-Project ini dilisensikan di bawah [MIT License](LICENSE).
+Project ini open source yah. pakai aja kalo mau
 
 ---
 
-**Dibuat dengan ❤️ oleh [Nama Kamu/Tim Kamu]**
+**Dibuat dengan ❤️ oleh Van Project's**
