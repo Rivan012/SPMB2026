@@ -53,8 +53,8 @@
             <!-- FORM CARD -->
             <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                 <div class="p-6 md:p-8">
-                    <form onsubmit="saveData(event)" id="mainForm">
-
+                    <form onsubmit="saveData(event)" method="post" action="{{ route('siswa.bio1') }}" id="mainForm">
+                        @csrf
                         <!-- STEP 1: DATA DIRI -->
                         <div id="step-1" class="step-content active">
                             <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center gap-2">
@@ -63,56 +63,68 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700">Nama Lengkap</label>
-                                    <input type="text" value="Budi Santoso"
-                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                    <input type="text" name="name" value="{{ $data->student->full_name }}"
+                                        class="w-full  border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700">NISN</label>
-                                    <input type="text" value="0012345678" readonly
+                                    <input type="text" value="{{ $data->student->nisn }}" name="nisn"
                                         class="w-full border border-gray-200 bg-gray-50 rounded-lg px-4 py-2 text-gray-500 cursor-not-allowed">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700">Tempat Lahir</label>
-                                    <input type="text"
+                                    <input type="text" name="tmpt_lhr" value="{{ $data->student->birth_place }}"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700">Tanggal Lahir</label>
-                                    <input type="date"
+                                    <input type="date" name="tanggal_lhr" value="{{ $data->student->birth_date }}"
+                                        class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1 text-gray-700">No WA/HP</label>
+                                    <input type="number" name="no_wa" value="{{ $data->student->phone_number }}"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700">Jenis Kelamin</label>
-                                    <select
+                                    <select name="jenis_kelamin"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-white">
-                                        <option>Laki-laki</option>
-                                        <option>Perempuan</option>
+                                        <option @if($data->student->gender == 'L') selected @endif>Laki-laki</option>
+                                        <option @if($data->student->gender == 'P') selected @endif>Perempuan</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium mb-1 text-gray-700">Agama</label>
-                                    <select
+                                    <select name="agama"
                                         class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none bg-white">
-                                        <option>Islam</option>
-                                        <option>Kristen</option>
-                                        <option>Katolik</option>
-                                        <option>Hindu</option>
-                                        <option>Buddha</option>
+                                        <option @if($data->student->religion == 'Islam') selected @endif value="Islam">
+                                            Islam</option>
+                                        <option @if($data->student->religion == 'Kristen') selected @endif
+                                            value="Kristen">Kristen</option>
+                                        <option @if($data->student->religion == 'Katolik') selected @endif
+                                            value="Katolik">Katolik</option>
+                                        <option @if($data->student->religion == 'Hindu') selected @endif value="Hindu">
+                                            Hindu</option>
+                                        <option @if($data->student->religion == 'Buddha') selected @endif value="Buddha">
+                                            Buddha</option>
+                                        <option @if($data->student->religion == 'Konghucu') selected @endif
+                                            value="Konghucu">Konghucu</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="mt-4">
                                 <label class="block text-sm font-medium mb-1 text-gray-700">Alamat Lengkap</label>
-                                <textarea rows="3"
-                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none"></textarea>
+                                <textarea name="alamat" rows="3"
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-primary focus:border-primary outline-none">{{ $data->student->address }}</textarea>
                             </div>
 
                             <!-- Tombol Navigasi Step 1 -->
                             <div class="flex justify-end mt-8 border-t pt-4">
-                                <a href="{{ route('siswa.bio1') }}" 
+                                <button type="submit"
                                     class="bg-primary hover:bg-blue-800 text-white px-6 py-2.5 rounded-lg font-medium shadow-md transition flex items-center gap-2">
                                     Selanjutnya <i class="fa-solid fa-arrow-right"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
 
@@ -126,7 +138,7 @@
         const sidebar = document.getElementById('sidebar');
         const openBtn = document.getElementById('openSidebar');
         const closeBtn = document.getElementById('closeSidebar');
-        
+
         function toggleSidebar() {
             sidebar.classList.toggle('hidden');
             sidebar.classList.toggle('absolute');
@@ -139,70 +151,31 @@
         let currentStep = 1;
         const totalSteps = 3;
 
-        function changeStep(step) {
-            goToStep(step);
-        }
-
-        function goToStep(step) {
-            // Update Content Visibility
-            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
-            document.getElementById(`step-${step}`).classList.add('active');
-
-            // Update Stepper UI
-            const progressBar = document.getElementById('progress-bar');
-            
-            // Calculate Progress Bar Width (0% for step 1, 50% for step 2, 100% for step 3)
-            let progress = 0;
-            if(step === 2) progress = 50;
-            if(step === 3) progress = 100;
-            progressBar.style.width = `${progress}%`;
-
-            // Loop through steps to update colors
-            for (let i = 1; i <= totalSteps; i++) {
-                const circle = document.getElementById(`step-circle-${i}`);
-                const label = circle.nextElementSibling;
-
-                if (i <= step) {
-                    // Active or Completed Steps
-                    circle.classList.remove('bg-white', 'text-gray-500', 'border-gray-300');
-                    circle.classList.add('bg-primary', 'text-white', 'border-white');
-                    
-                    label.classList.remove('text-gray-500');
-                    label.classList.add('text-primary');
-
-                    if(i === step) {
-                        circle.classList.add('scale-110', 'ring-2', 'ring-primary', 'ring-offset-2');
-                    } else {
-                        circle.classList.remove('scale-110', 'ring-2', 'ring-primary', 'ring-offset-2');
-                    }
-                } else {
-                    // Inactive Steps
-                    circle.classList.remove('bg-primary', 'text-white', 'border-white', 'scale-110', 'ring-2', 'ring-primary', 'ring-offset-2');
-                    circle.classList.add('bg-white', 'text-gray-500', 'border-gray-300');
-                    
-                    label.classList.remove('text-primary');
-                    label.classList.add('text-gray-500');
-                }
-            }
-            
-            currentStep = step;
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
 
         function saveData(e) {
-            e.preventDefault();
-            const btn = e.target.querySelector('button[type="submit"]');
+            e.preventDefault(); // cegah submit dulu
+
+            const form = e.target;
+            const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerHTML;
+
+            // Tombol loading
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...';
-            
+
+            // Tampilkan toast
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-20', 'opacity-0');
+
+            // Setelah 1 detik → sembunyikan toast → submit form
             setTimeout(() => {
-                btn.disabled = false;
-                btn.innerHTML = originalText;
-                const toast = document.getElementById('toast');
-                toast.classList.remove('translate-y-20', 'opacity-0');
-                setTimeout(() => { toast.classList.add('translate-y-20', 'opacity-0'); }, 3000);
-            }, 1000);
+                toast.classList.add('translate-y-20', 'opacity-0');
+
+                // Submit form beneran 👇
+                form.submit();
+
+            }, 1200);
         }
+
     </script>
 </x-siswa>

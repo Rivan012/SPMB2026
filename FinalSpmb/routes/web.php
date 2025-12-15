@@ -40,6 +40,7 @@ Route::middleware(['auth', 'role:student'])->prefix('siswa')->group(function () 
     Route::get('/student/dashboard.html', [DashboardController::class,'index'])->name('siswa.index');
     Route::get('/student/biodata.html', [BiodataController::class,'index'])->name('siswa.bio');
     Route::get('/student/biodata.html/1', [BiodataController::class,'index1'])->name('siswa.bio1');
+    Route::post('/student/biodata.html/1', [BiodataController::class,'post'])->name('siswa.bio1');
     Route::get('/student/biodata.html/2', [BiodataController::class,'index2'])->name('siswa.bio2');
     Route::get('/student/dokumen.html', [DokumenController::class,'index'])->name('siswa.dokumen');
     // Dashboard Siswa
