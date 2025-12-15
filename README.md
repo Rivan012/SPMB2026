@@ -58,7 +58,7 @@ Ikuti langkah-langkah berikut untuk menjalankan project di komputer lokal:
 
 1.  **Clone Repositori**
     ```bash
-    git clone [[https://github.com/username-kamu/spmb2026.git](https://github.com/username-kamu/spmb2026.git)](https://github.com/Rivan012/SPMB2026.git)
+    git clone [https://github.com/Rivan012/SPMB2026.git](https://github.com/Rivan012/SPMB2026.git)
     cd spmb2026
     ```
 
